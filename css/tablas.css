@@ -1,4 +1,6 @@
-
+table{
+  margin: auto;
+}
 
 .pagination li:hover{
     cursor: pointer;
@@ -6,6 +8,7 @@
 }
 .pagination-container{
   margin-top: 5%;
+
 }
 .form-group{
     margin-left: 45%;

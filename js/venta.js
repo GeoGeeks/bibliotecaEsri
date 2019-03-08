@@ -44,7 +44,7 @@ for (var i = 0; i < libros.length; i++) {
 
     var deleteL = document.createElement('img');
     deleteL.src = "http://geoapps.esri.co/Recursos/biblioteca_Entrenamiento/eliminar.png";
-    deteleL.setAttribute("width", "20%");
+    deleteL.setAttribute("width", "20%");
     eliminar.setAttribute("onclick", "recopilarFormularioEliminar("+i+");");
     eliminar.appendChild(deleteL);
 
@@ -55,29 +55,27 @@ for (var i = 0; i < libros.length; i++) {
 
 
     details.addEventListener("mouseover", function(event) {
-    event.target.style.transform = "scale(0.8)";
-    event.target.style.cursor = "pointer";
+      event.target.style.transform = "scale(0.8)";
+      event.target.style.cursor = "pointer";
   });
     details.addEventListener("mouseout", function(event) {
     event.target.style.transform = "scale(1.0)";
   });
 
     modify.addEventListener("mouseover", function(event) {
-  // highlight the mouseover target
-  event.target.style.transform = "scale(0.8)";
-  event.target.style.cursor = "pointer";
+      event.target.style.transform = "scale(0.8)";
+      event.target.style.cursor = "pointer";
 });
     modify.addEventListener("mouseout", function(event) {
 // highlight the mouseover target
   event.target.style.transform = "scale(1.0)";
 });
   deleteL.addEventListener("mouseover", function(event) {
-
-  event.target.style.transform = "scale(0.8)";
-  event.target.style.cursor = "pointer";
+event.target.style.transform = "scale(0.8)";
+event.target.style.cursor = "pointer";
   });
   deleteL.addEventListener("mouseout", function(event) {
-
+// highlight the mouseover target
   event.target.style.transform = "scale(1.0)";
 });
 }
