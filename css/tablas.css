@@ -1,0 +1,22 @@
+
+
+.pagination li:hover{
+    cursor: pointer;
+    color:#00d1b2;
+}
+.pagination-container{
+  margin-top: 5%;
+}
+.form-group{
+    margin-left: 45%;
+}
+ul.pagination{
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+@media only screen and (max-width: 800px) {
+  ul.pagination li{
+    width: 20%;
+  }
+}

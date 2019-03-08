@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Venta de libros</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tablas.css">
+
+  </head>
+  <body>
+    <section class="hero is-info">
+  <div class="hero-body">
+    <div class="container">
+    <a href="index.html"><img id="logo" src="pics/Esricolombia.png" alt="Esricolombia"></a>
+      <h6 class="title">
+        BIBLIOTECA
+      </h6>
+    </div>
+  </div>
+<div class="primeros">
+  <a href="#" class="button is-primary" id="nuevoRegistro">Insertar un libro nuevo</a>
+</div>
+
+
+</section>
+
+<div class="field" id="search">
+  <p class="control has-icons-left has-icons-right">
+    <input class="input" id="buscarPrestar" onkeypress="buscar();" type="search" placeholder="Search">
+    <span class="icon is-small is-left">
+      <i class="fas fa-search"></i>
+    </span>
+
+</div>
+<div class="form-group"> 	<!--		Show Numbers Of Rows 		-->
+  <select class  ="form-control" name="state" id="maxRows">
+     <option value="5">5</option>
+     <option value="10">10</option>
+     <option value="15">15</option>
+     <option value="20">20</option>
+    </select>
+
+  </div>
+
+
+
+		<div class="Page-container">
+
+
+<table class="table" id="paraVenta">
+  <thead>
+    <tr>
+      <th>ISBN</th>
+      <th>Nombre</th>
+      <th>Detalles</th>
+      <th>Modificar</th>
+      <th>Eliminar</th>
+      <th>Vender</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+
+
+  </tbody>
+</table>
+
+
+<div class="modal" id="detalles">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title" id="detallesNombre"></p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <h2 id="Autor"></h2>
+      <p id="year"></p>
+    </section>
+  </div>
+</div>
+
+<div class="modal" id="modificar">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title" id="modificarNombre"></p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="field">
+        <label class="label">ISBN</label>
+        <div class="control">
+          <input class="input" type="text">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Nombre</label>
+        <div class="control">
+          <input class="input" type="text">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Autor</label>
+        <div class="control">
+          <input class="input" type="text">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Editorial</label>
+        <div class="control">
+          <input class="input" type="text">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Año de Publicación</label>
+        <div class="control">
+          <input class="input" type="date">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Categoría</label>
+        <div class="control">
+          <input class="input" type="text">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Cantidad disponible para préstamo</label>
+        <div class="control">
+          <input class="input" type="number">
+        </div>
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" onclick="modificar();">MODIFICAR</button>
+      <button class="button" name="cancel">CANCELAR</button>
+    </footer>
+  </div>
+</div>
+
+<div class="modal" id="eliminar">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <section class="modal-card-body">
+      <p>¿Está seguro de eliminar?</p>
+    </section>
+    <footer class="modal-card-foot">
+      <button onclick="eliminar();" class="button is-danger">SI</button>
+      <button class="button" name="cancel">NO</button>
+    </footer>
+  </div>
+</div>
+
+
+
+<div class="modal" id="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title" id="libroP"></p>
+
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+        <div class="field">
+          <label class="label">CORREO CORPORATIVO</label>
+          <div class="control">
+            <input id="correo" class="input" type="email" placeholder="jortiz@esri.co">
+          </div>
+        </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button onclick="enviar();" class="button is-success">PRESTAR</button>
+      <button class="button" name="cancel">CANCELAR</button>
+    </footer>
+  </div>
+</div>
+
+
+
+
+<div id="modalRegistro" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">INSERTAR UN NUEVO LIBRO</p>
+
+
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="field">
+        <label class="label">ISBN</label>
+        <div class="control">
+          <input class="input" type="text">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Nombre</label>
+        <div class="control">
+          <input class="input" type="text">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Autor</label>
+        <div class="control">
+          <input class="input" type="text">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Editorial</label>
+        <div class="control">
+          <input class="input" type="text">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Año de Publicación</label>
+        <div class="control">
+          <input class="input" type="date">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Categoría</label>
+        <div class="control">
+          <input class="input" type="text">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Cantidad disponible para préstamo</label>
+        <div class="control">
+          <input class="input" type="number">
+        </div>
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" onclick="registrarLibro();">GUARDAR</button>
+      <button class="button" name="cancel">CANCELAR</button>
+    </footer>
+  </div>
+</div>
+
+<div class='pagination-container'>
+    <nav>
+      <ul class="pagination">
+        <li data-page="prev" >
+           <span> < <span class="sr-only">(current)</span></span>
+        </li>
+       <!--	Here the JS Function Will Add the Rows -->
+        <li data-page="next" id="prev">
+           <span> > <span class="sr-only">(current)</span></span>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+</div>
+
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Powered</strong> by <a href="https://geogeeks2.maps.arcgis.com/home/index.html">Semillero de Innovación Geográfica</a>.
+        </p>
+        <a href="https://www.facebook.com/geogeeksco/" class="fa fa-facebook"></a>
+        <a href="https://twitter.com/geo_geeks" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-github"></a>
+        <a href="https://www.youtube.com/channel/UCuGsuNbUykWZ6lsb85PeW0A?view_as=subscriber" class="fa fa-youtube"></a>
+        <a href="https://www.instagram.com/geo_geeks/" class="fa fa-instagram"></a>
+
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" charset="utf-8"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
+
+    <script src="js/tablas.js" charset="utf-8"></script>
+     <script src="js/main.js" charset="utf-8"></script>
+     <script src="js/venta.js" charset="utf-8"></script>
+  </body>
+</html>
